@@ -1,0 +1,25 @@
+=== GPG: Generate a Key Pair
+* open Git Bash
+* enter `gpg --gen-key`
+** type, size, and time of validity: default values can be used
+** name, email and comment are essential as they will be seen by anyone downloading a software artifact and validating a signature
+** passphase should be **empty**(?)
+* list existing keys by entering `gpg --list-keys`
+[source,bash]
+----
+$ gpg --list-keys
+/c/Users/bjoern/.gnupg/pubring.gpg
+
+pub   2048R/27467A0F 2016-06-18 #<1>
+uid                  Björn Engel <bjoern@example.de>
+sub   2048R/4AC3ED13 2016-06-18
+----
+<1> the relevant public key (27467A0F)
+
+* distribute public key to a key server with 
+[source,bash]
+----
+$ gpg --keyserver hkp://pgp.mit.edu --send-keys 27467A0F
+----
+
+_http://blog.sonatype.com/2010/01/how-to-generate-pgp-signatures-with-maven/[How to Generate PGP Signatures with Maven]_

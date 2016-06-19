@@ -1,0 +1,33 @@
+= Björn's Scrapbook
+Björn Engel <bjoern@bjoern-engel.de>
+v0.0.1, 2016-06-19
+:example-caption!:
+ifndef::imagesdir[:imagesdir: images]
+
+This is a scrapbook summarizing my experience.
+
+== Introduction
+
+This project does something.
+We just haven't decided what that is yet.
+
+== Eclipse
+
+== Asciidoctor
+
+== Releasing artifacts by maven-release-plugin
+=== Prerequisites
+* installed Git Bash (Windows)
+
+The project needs also 
+* JavaDoc
+* Sources
+* Signing
+* Description
+* SCM
+
+include::sections/github.adoc[]
+
+include::sections/gpg.adoc[]
+
+include::sections/sonatype.adoc[]

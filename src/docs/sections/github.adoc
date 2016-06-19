@@ -1,0 +1,73 @@
+=== GitHub: Checking for existing SSH keys
+* open Git Bash
+* enter `ls -al ~/.ssh` to see if there are existing SSH keys present
+
+Default filenames of the public keys are:
+
+* id_dsa.pub
+* id_ecdsa.pub
+* id_ed25519.pub
+* id_rsa.pub
+
+_https://help.github.com/articles/checking-for-existing-ssh-keys/[Checking for existing SSH keys]_
+
+=== GitHub: Generating a new SSH key
+* open Git Bash
+* generate ssh key pair
+[source,bash]
+----
+$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+Generating public/private rsa key pair.
+----
+* When you're prompted to "Enter a file in which to save the key," press Enter to accept the default file location
+[source,bash]
+----
+Enter a file in which to save the key (/Users/you/.ssh/id_rsa): [Press enter]
+----
+* in the next step the passphrase should **not** be **empty**
+[source,bash]
+----
+Enter passphrase (empty for no passphrase): [Type a passphrase]
+Enter same passphrase again: [Type passphrase again]
+----
+
+_https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/[Generating a new SSH key and adding it to the ssh-agent]_
+
+=== GitHub: Adding SSH key to the ssh-agent
+* turn on ssh-agent (Git Bash):
+[source,bash]
+----
+$ eval "$(ssh-agent -s)"
+Agent pid 59566
+----
+
+* add ssh key to ssh-agent
+[source,bash]
+----
+$ ssh-add ~/.ssh/id_rsa
+----
+
+_https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/[Generating a new SSH key and adding it to the ssh-agent]_
+
+=== GitHub: Adding SSH key to GitHub account
+* copy ssh key to clipboard
+[source,bash]
+----
+$ clip < ~/.ssh/id_rsa.pub
+----
+
+* add ssh key from clipboard in GitHub **Settings** -> **SSH and GPG keys** -> **New SSH keys**
+
+_https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/[Adding a new SSH key to your GitHub account]_
+
+=== GitHub: Testing SSH connection
+* open Git Bash
+* enter `ssh -T git@github.com`
+* accept fingerprint
+* verify message
+----
+Hi username! You've successfully authenticated, but GitHub does not
+provide shell access.
+----
+
+_https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/[Adding a new SSH key to your GitHub account]_
