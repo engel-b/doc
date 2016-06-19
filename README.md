@@ -1,1 +1,2 @@
-# doc
+# Releasing maven artifacts
+
